@@ -224,7 +224,6 @@ function getList(param, callback, error) {
 }
 
 
-
 function getUnreadChat(error){
     console.log("getUnreadChat들어옴");
     $.ajax({
@@ -332,13 +331,13 @@ function getUnreadStatus(groupDTOList){
             realtext += "</span>"
             realtext += "</div>"
             realtext+= "</div>"
-            realtext+= "<p class=\"chatInfoTxt\">"+groupDTO.groupContent+"</p>"
+            realtext+= "<p class=\"chatInfoTxt\"></p>"
             realtext+= "<p class=\"endTime\"></p>"
             realtext+= "</div>"
             realtext+= "</li>"
         }else{
             realtext+= "</div>"
-            realtext+= "<p class=\"chatInfoTxt\">"+groupDTO.groupContent+"</p>"
+            realtext+= "<p class=\"chatInfoTxt\"></p>"
             realtext+= "<p class=\"endTime\"></p>"
             realtext+= "</div>"
             realtext+= "</li>"
@@ -413,7 +412,6 @@ function getChattingContentList(chattingDTOList) {
 
     })
     $(".chattingRoomWrap").html(text)
-    document.getElementById('chattingRoom').scrollTop = document.getElementById('chattingRoom').scrollHeight;
 }
 
 function add(chatting, error){
@@ -451,11 +449,14 @@ function send(){
 }
 function onOpen(){
     webSocket.send(JSON.stringify({groupId : myGroupId, messageType:'입장',senderUserNickName:userNickName, senderUserId : userId}));
+    console.log("onOpen 들어옴");
+    console.log(myGroupId);
 }
 function onMessage(e){
     if(!e.data.includes(':')){
         return null;
     }
+    console.log("onmessage들어옴")
     chattingRoom =document.getElementById("chattingRoom");
     chatdata = e.data;
     let datas = chatdata.replaceAll("\"", "");
@@ -483,7 +484,6 @@ function onMessage(e){
         + "</div>"
         + "</div>"
 
-    document.getElementById('chattingRoom').scrollTop = document.getElementById('chattingRoom').scrollHeight;
 }
 function onClose(){
     disconnect();
