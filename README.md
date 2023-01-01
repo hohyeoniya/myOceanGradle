@@ -42,7 +42,7 @@
 - 모임 검색 서비스, 모임 페이지에서 검색 시 모임 게시글 검색 결과를 restful api로 구현, 페이지네이션 처리
 
 # ERD
-![ERD](./NEOS.drawio.png)
+![ERD](./my_ocean_ERD.png)
 
 # 느낀 점
 - 프로젝트를 하면서 어려웠던 점
